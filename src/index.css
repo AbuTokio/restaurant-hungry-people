@@ -13,4 +13,6 @@
 @theme {
   --font-opensans: OpenSans, sans-serif;
   --font-banny: Banny, sans-serif;
+  --color-primary: #e8c300;
+  --color-secondary: #333333;
 }
