@@ -13,7 +13,10 @@ export default function Nav({ elements }: NavProps) {
   return (
     <nav className="pt-[15px] flex gap-35">
       {elements.map(({ name, path }) => (
-        <NavLink to={path ? path : name.toLowerCase()} key={name}>
+        <NavLink
+          className={({ isActive }) => `${isActive && "border-b"} h-fit`}
+          to={path ? path : name.toLowerCase()}
+          key={name}>
           {name}
         </NavLink>
       ))}
