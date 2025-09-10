@@ -24,6 +24,7 @@ export default function Button({ filled, label, icon, iconPadding = 4, onClick, 
           linkTo
             ? () => {
                 setClicked(true)
+                setTimeout(() => setClicked(false), 100)
               }
             : onClick
         }>
