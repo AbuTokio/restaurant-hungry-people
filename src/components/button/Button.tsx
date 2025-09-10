@@ -27,9 +27,7 @@ export default function Button({ filled, label, icon, iconPadding = 4, onClick, 
               }
             : onClick
         }>
-        {icon
-          ? icon && <img className={`mx-auto w-full h-full p-${iconPadding.toString()}`} src={icon} alt={label} />
-          : label}
+        {icon ? icon && <img className={`mx-auto p-${iconPadding.toString()}`} src={icon} alt={label} /> : label}
       </button>
       {linkTo && clicked && <Navigate to={linkTo} />}
     </>
