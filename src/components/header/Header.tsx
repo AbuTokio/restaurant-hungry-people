@@ -2,7 +2,11 @@ import Accent from "../accent/Accent"
 import Button from "../button/Button"
 import Nav from "../nav/Nav"
 
-export default function Header() {
+interface HeaderProps {
+  onScrollToMain: () => void
+}
+
+export default function Header({ onScrollToMain }: HeaderProps) {
   return (
     <header className="container mx-auto max-w-[1440px] px-20 bg-[url(/img/bg-header.png)] bg-cover">
       <section className="mx-auto pt-[25px] px-20 w-fit flex gap-17.5 font-opensans text-white font-bold text-xs leading-4.5 uppercase">
@@ -33,7 +37,7 @@ export default function Header() {
         </div>
       </section>
       <section className="flex justify-center items-center py-20">
-        <Button icon="/img/arrow-down.svg" />
+        <Button icon="/img/arrow-down.svg" onClick={onScrollToMain} />
       </section>
     </header>
   )
