@@ -1,4 +1,6 @@
 import H2 from "../h2/H2"
+import MenuContainer from "../menu-container/MenuContainer"
+import MenuTitle from "../menu-title/MenuTitle"
 import SectionImage from "../section-image/SectionImage"
 
 interface SectionProps {
@@ -12,7 +14,10 @@ interface SectionProps {
 
 export default function Section({ title, subtitle, description, imgUrl, orientation, className }: SectionProps) {
   const textArticle = (
-    <article className="w-6/13 flex flex-col justify-center items-center gap-2">
+    <article
+      className={`flex flex-col justify-center items-center gap-2 ${
+        (orientation === "left" || orientation === "right") && "w-6/13"
+      } ${orientation === "menu" && "w-7/16"}`}>
       <H2 label={title} />
       <p className="font-opensans font-bold text-lg leading-7 text-center">{subtitle}</p>
       {description && <p className="font-opensans text-sm leading-6 text-center">{description}</p>}
@@ -28,7 +33,12 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
     </article>
   )
 
-  const menuArticle = <article></article>
+  const menuArticle = (
+    <article className="w-full flex flex-col justify-center items-center gap-12.5">
+      <MenuTitle />
+      <MenuContainer />
+    </article>
+  )
 
   const bookingArticle = <article></article>
 
@@ -49,8 +59,9 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
       )
     case "menu":
       return (
-        <section className={`${className} px-20 py-25 flex flex-col`}>
-          {textArticle} {menuArticle}
+        <section className={`${className} px-20 py-25 flex flex-col justify-center items-center gap-12.5`}>
+          {textArticle}
+          {menuArticle}
         </section>
       )
     case "booking":
