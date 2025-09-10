@@ -13,7 +13,7 @@ export default function Layout() {
   return (
     <>
       <Header onScrollToMain={scrollToMain} />
-      <main className="container mx-auto max-w-[1440px] px-20 py-25" ref={mainRef}>
+      <main className="container mx-auto max-w-[1440px]" ref={mainRef}>
         <Outlet />
       </main>
       <Footer />

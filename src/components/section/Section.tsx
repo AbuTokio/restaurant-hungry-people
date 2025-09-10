@@ -35,34 +35,34 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
   switch (orientation) {
     case "left":
       return (
-        <section className={`${className} flex justify-between items-center`}>
+        <section className={`${className} px-20 py-25 flex justify-between items-center`}>
           {textArticle}
           {imageArticle}
         </section>
       )
     case "right":
       return (
-        <section className={`${className} flex`}>
+        <section className={`${className} px-20 py-25 flex`}>
           {imageArticle}
           {textArticle}
         </section>
       )
     case "menu":
       return (
-        <section className={`${className} flex flex-col`}>
+        <section className={`${className} px-20 py-25 flex flex-col`}>
           {textArticle} {menuArticle}
         </section>
       )
     case "booking":
       return (
-        <section className={`${className} flex`}>
+        <section className={`${className} px-20 py-25 flex`}>
           {bookingArticle}
           {imageArticle}
         </section>
       )
     case "booking-confirmation":
       return (
-        <section className={`${className} flex`}>
+        <section className={`${className} px-20 py-25 flex`}>
           {textArticle}
           {imageArticle}
         </section>
