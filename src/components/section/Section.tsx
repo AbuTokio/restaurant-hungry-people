@@ -1,3 +1,4 @@
+import BookingForm from "../booking-form/BookingForm"
 import H2 from "../h2/H2"
 import MenuContainer from "../menu-container/MenuContainer"
 import MenuTitle from "../menu-title/MenuTitle"
@@ -5,7 +6,7 @@ import SectionImage from "../section-image/SectionImage"
 
 interface SectionProps {
   title: string
-  subtitle: string
+  subtitle?: string
   description?: string
   imgUrl?: string
   orientation: "left" | "right" | "menu" | "booking" | "booking-confirmation"
@@ -17,15 +18,15 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
     <article
       className={`flex flex-col justify-center items-center gap-2 ${
         (orientation === "left" || orientation === "right") && "w-6/13"
-      } ${orientation === "menu" && "w-7/16"}`}>
+      } ${orientation === "menu" && "w-7/16"} ${orientation === "booking-confirmation" && "flex-1"}`}>
       <H2 label={title} />
-      <p className="font-opensans font-bold text-lg leading-7 text-center">{subtitle}</p>
+      {subtitle && <p className="font-opensans font-bold text-lg leading-7 text-center">{subtitle}</p>}
       {description && <p className="font-opensans text-sm leading-6 text-center">{description}</p>}
     </article>
   )
 
   const imageArticle = imgUrl && (
-    <article className="w-1/2">
+    <article className="flex-1">
       <SectionImage
         src={imgUrl}
         orientation={orientation === "left" || orientation.includes("booking") ? "right" : "left"}
@@ -40,7 +41,14 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
     </article>
   )
 
-  const bookingArticle = <article></article>
+  const bookingArticle = (
+    <article className={`flex flex-col justify-center items-center gap-5 flex-1`}>
+      <H2 label={title} />
+      {subtitle && <p className="font-opensans font-bold text-lg leading-7 text-center">{subtitle}</p>}
+      {description && <p className="font-opensans text-sm leading-6 text-center">{description}</p>}
+      <BookingForm />
+    </article>
+  )
 
   switch (orientation) {
     case "left":
@@ -66,14 +74,14 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
       )
     case "booking":
       return (
-        <section className={`${className} px-20 py-25 flex`}>
+        <section className={`${className} px-20 py-25 flex justify-between items-center`}>
           {bookingArticle}
           {imageArticle}
         </section>
       )
     case "booking-confirmation":
       return (
-        <section className={`${className} px-20 py-25 flex`}>
+        <section className={`${className} px-20 py-25 flex justify-between items-center`}>
           {textArticle}
           {imageArticle}
         </section>
