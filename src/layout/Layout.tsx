@@ -2,6 +2,7 @@ import { Outlet } from "react-router"
 import Header from "../components/header/Header"
 import Footer from "../components/footer/Footer"
 import { useRef } from "react"
+import { ScrollContext } from "../contexts/ScrollContext"
 
 export default function Layout() {
   const mainRef = useRef<HTMLElement | null>(null)
@@ -11,12 +12,12 @@ export default function Layout() {
   }
 
   return (
-    <>
+    <ScrollContext.Provider value={{ scrollToMain }}>
       <Header onScrollToMain={scrollToMain} />
-      <main className="container mx-auto max-w-[1440px]" ref={mainRef}>
+      <main ref={mainRef}>
         <Outlet />
       </main>
       <Footer />
-    </>
+    </ScrollContext.Provider>
   )
 }

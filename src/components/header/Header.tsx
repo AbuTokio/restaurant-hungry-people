@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export default function Header({ onScrollToMain }: HeaderProps) {
   return (
-    <header className="container mx-auto max-w-[1440px] px-20 bg-[url(/img/bg-header.png)] bg-cover">
+    <header className="px-20 bg-[url(/img/bg-header.png)] bg-cover">
       <section className="mx-auto pt-[25px] px-20 w-fit flex gap-17.5 font-opensans text-white font-bold text-xs leading-4.5 uppercase">
         <Nav elements={[{ name: "Home", path: "/" }, { name: "Team" }]} />
         <img src="/img/logo.svg" alt="brand-logo" />
@@ -31,9 +31,9 @@ export default function Header({ onScrollToMain }: HeaderProps) {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center gap-5">
-          <Button icon="/img/facebook.svg" />
-          <Button icon="/img/twitter.svg" />
-          <Button icon="/img/instagram.svg" />
+          <Button icon="/img/facebook.svg" linkTo="https://www.facebook.com/" />
+          <Button iconPadding={5} icon="/img/x.svg" linkTo="https://www.x.com/" />
+          <Button icon="/img/instagram.svg" linkTo="https://www.instagram.com/" />
         </div>
       </section>
       <section className="flex justify-center items-center py-20">

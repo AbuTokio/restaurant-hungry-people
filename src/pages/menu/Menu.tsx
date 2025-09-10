@@ -1,6 +1,11 @@
+import { useEffect } from "react"
 import Section from "../../components/section/Section"
 
 export default function Menu() {
+  useEffect(() => {
+    document.title = "Hungry People - Menu"
+  }, [])
+
   return (
     <>
       <Section

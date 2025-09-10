@@ -6,7 +6,7 @@ interface H2Props {
 
 export default function H2({ label }: H2Props) {
   return (
-    <h2 className="font-banny text-4xl font-bold leading-12 uppercase flex flex-col justify-center items-center gap-2">
+    <h2 className="font-banny text-4xl font-bold text-center leading-12 uppercase flex flex-col justify-center items-center gap-2">
       {label}
       <Accent />
     </h2>

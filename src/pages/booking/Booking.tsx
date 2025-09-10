@@ -19,6 +19,11 @@ export default function Booking() {
     }
   }, [status])
 
+  useEffect(() => {
+    if (!status) document.title = "Hungry People - Booking"
+    else document.title = `Hungry People - Booking ${status.charAt(0).toUpperCase() + status.slice(1)}`
+  })
+
   return (
     <>
       <Section

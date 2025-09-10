@@ -1,6 +1,11 @@
+import { useEffect } from "react"
 import Section from "../../components/section/Section"
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Hungry People - Home"
+  }, [])
+
   return (
     <>
       <Section

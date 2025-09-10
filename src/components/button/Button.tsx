@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Navigate } from "react-router"
+import { useScroll } from "../../contexts/ScrollContext"
 
 interface ButtonProps {
   filled?: boolean
@@ -13,6 +14,7 @@ interface ButtonProps {
 
 export default function Button({ filled, label, icon, iconPadding = 4, onClick, linkTo, className }: ButtonProps) {
   const [clicked, setClicked] = useState(false)
+  const { scrollToMain } = useScroll()
 
   return (
     <>
@@ -29,12 +31,16 @@ export default function Button({ filled, label, icon, iconPadding = 4, onClick, 
             ? () => {
                 setClicked(true)
                 setTimeout(() => setClicked(false), 100)
+                {
+                  if (!linkTo.startsWith("http")) scrollToMain()
+                  else window.open(linkTo, "_blank")
+                }
               }
             : onClick
         }>
         {icon ? icon && <img className={`mx-auto p-${iconPadding.toString()}`} src={icon} alt={label} /> : label}
       </button>
-      {linkTo && clicked && <Navigate to={linkTo} />}
+      {linkTo && !linkTo.startsWith("http") && clicked && <Navigate to={linkTo} />}
     </>
   )
 }
