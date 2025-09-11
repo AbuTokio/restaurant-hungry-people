@@ -6,13 +6,13 @@ interface ButtonProps {
   filled?: boolean
   label?: string
   icon?: string
-  iconPadding?: number
+  iconSize?: number
   onClick?: () => void
   linkTo?: string
   className?: string
 }
 
-export default function Button({ filled, label, icon, iconPadding = 4, onClick, linkTo, className }: ButtonProps) {
+export default function Button({ filled, label, icon, iconSize = 5, onClick, linkTo, className }: ButtonProps) {
   const [clicked, setClicked] = useState(false)
   const { scrollToMain } = useScroll()
 
@@ -24,7 +24,9 @@ export default function Button({ filled, label, icon, iconPadding = 4, onClick, 
             ? "bg-accent active:bg-accent-darker"
             : "bg-transparent border border-[#FFFFFF80] active:bg-[#FFFFFF80]"
         } ${
-          icon ? "border-[#FFFFFF33] w-15 h-15 rounded-full" : "rounded-[5px] px-15 py-6 min-w-50"
+          icon
+            ? "border-[#FFFFFF33] md:w-15 md:h-15 w-10 h-10 rounded-full"
+            : "rounded-[5px] md:px-15 px-8 md:py-6 py-4 md:min-w-50"
         } font-opensans font-bold text-xs text-white leading-5 uppercase cursor-pointer overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out`}
         onClick={
           linkTo
@@ -38,7 +40,15 @@ export default function Button({ filled, label, icon, iconPadding = 4, onClick, 
               }
             : onClick
         }>
-        {icon ? icon && <img className={`mx-auto p-${iconPadding.toString()}`} src={icon} alt={label} /> : label}
+        {icon
+          ? icon && (
+              <img
+                className={`mx-auto w-${iconSize} h-${iconSize} md:w-${iconSize + 5} md:h-${iconSize + 5} md:px-1`}
+                src={icon}
+                alt={label}
+              />
+            )
+          : label}
       </button>
       {linkTo && !linkTo.startsWith("http") && clicked && <Navigate to={linkTo} />}
     </>

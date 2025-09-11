@@ -81,7 +81,7 @@ export default function BookingForm() {
       {showAlert && (
         <Alert
           ref={ref.alert}
-          className="fixed z-999 bottom-30 left-1/2 -translate-x-1/2 transition-all duration-300"
+          className="fixed z-999 bottom-30 left-1/2 -translate-x-1/2 transition-all duration-300 w-[203px] md:w-fit text-center"
           severity="error">
           Please fill in all fields!
         </Alert>

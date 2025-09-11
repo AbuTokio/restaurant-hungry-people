@@ -17,8 +17,10 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
   const textArticle = (
     <article
       className={`flex flex-col justify-center items-center gap-2 ${
-        (orientation === "left" || orientation === "right") && "w-6/13"
-      } ${orientation === "menu" && "w-7/16"} ${orientation === "booking-confirmation" && "flex-1"}`}>
+        (orientation === "left" || orientation === "right") && "md:w-6/13 w-3/4"
+      } ${orientation === "menu" && "2xl:w-7/16 md:w-2/3 w-3/4"} ${
+        orientation === "booking-confirmation" && "flex-1"
+      }`}>
       <H2 label={title} />
       {subtitle && <p className="font-opensans font-bold text-lg leading-7 text-center">{subtitle}</p>}
       {description && <p className="font-opensans text-sm leading-6 text-center">{description}</p>}
@@ -53,35 +55,39 @@ export default function Section({ title, subtitle, description, imgUrl, orientat
   switch (orientation) {
     case "left":
       return (
-        <section className={`${className} px-20 py-25 flex justify-between items-center`}>
+        <section
+          className={`${className} mx-auto 2xl:px-20 2xl:pl-40 md:pl-15 py-25 md:px-5 flex flex-col md:flex-row justify-between items-center`}>
           {textArticle}
           {imageArticle}
         </section>
       )
     case "right":
       return (
-        <section className={`${className} px-20 py-25 flex`}>
+        <section
+          className={`${className} mx-auto 2xl:px-20 md:px-20 py-25 flex flex-col md:flex-row justify-between items-center`}>
           {imageArticle}
           {textArticle}
         </section>
       )
     case "menu":
       return (
-        <section className={`${className} px-20 py-25 flex flex-col justify-center items-center gap-12.5`}>
+        <section className={`${className} 2xl:px-20 py-25 flex flex-col justify-center items-center gap-12.5`}>
           {textArticle}
           {menuArticle}
         </section>
       )
     case "booking":
       return (
-        <section className={`${className} px-20 py-25 flex justify-between items-center`}>
+        <section
+          className={`${className} px-8 2xl:px-20 2xl:pl-45 py-25 flex flex-col 2xl:flex-row justify-between gap-10 2xl:gap-0 items-center`}>
           {bookingArticle}
           {imageArticle}
         </section>
       )
     case "booking-confirmation":
       return (
-        <section className={`${className} px-20 py-25 flex justify-between items-center`}>
+        <section
+          className={`${className} px-10 2xl:px-20 py-25 flex flex-col 2xl:flex-row gap-10 2xl:gap-0 justify-between items-center`}>
           {textArticle}
           {imageArticle}
         </section>

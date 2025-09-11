@@ -32,9 +32,9 @@ export default function Booking() {
         orientation={status === "confirmed" ? "booking-confirmation" : "booking"}
         subtitle={status === "confirmed" ? "Thanks for dining with us." : ""}
       />
-      <p className="text-center mb-30 font-opensans text-xs text-[#33333380]">
-        Mon - Fri: <span className="font-bold">8PM - 10PM</span>, Sat - Sun:{" "}
-        <span className="font-bold">8PM - 3AM</span>, Phone:{" "}
+      <p className="text-center mb-30 font-opensans text-[8px] md:text-xs text-[#33333380]">
+        Mon - Fri: <span className="font-bold">8PM - 10PM</span>, Sat - Sun:
+        <span className="font-bold"> 8PM - 3AM</span>, Phone:
         <span className="font-bold">+40 729 131 637/+40 726 458 782</span>
       </p>
 

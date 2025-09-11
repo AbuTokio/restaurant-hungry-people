@@ -11,7 +11,7 @@ export default function MenuContainer() {
   }, [])
 
   return (
-    <div className="flex w-full justify-between">
+    <div className="flex flex-col 2xl:flex-row w-full justify-between items-center 2xl:items-start gap-12 2xl:gap-0">
       {categories.map((category, index) => (
         <MenuRow key={index} data={hungryData.filter((item: MenuItem) => item.category === category)} />
       ))}
